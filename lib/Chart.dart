@@ -112,8 +112,23 @@ class _ChartState extends State<Chart> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: Color(0xffFFFFFF),
       appBar: AppBar(
-        title: const Text("Chart-Shridevi Morning"),
+        title: Row(
+          children: [
+            Icon(Icons.arrow_back_ios_new, color: Colors.black), // Icon before title
+            SizedBox(width: 8),
+            Text("Chart-Shridevi Morning"),
+          ],
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1.0), // Set height of the divider
+          child: Divider(
+            height: 1,
+            thickness: 2,
+            color: Color(0xffDCCEBD), // Change color as needed
+          ),
+        ),
       ),
       body: FutureBuilder<List<dynamic>>(
         future: getData(),
@@ -151,14 +166,14 @@ class _ChartState extends State<Chart> {
                 String endDate = formatDate(dataList[endIndex]['Date']);
 
                 return Padding(
-                  padding: EdgeInsets.symmetric(vertical: screenHeight*0.01, horizontal: screenWidth*0.02),
+                  padding: EdgeInsets.symmetric(vertical: screenHeight*0.01, horizontal: screenWidth*0.045),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("$startDate - $endDate", style: const TextStyle(fontSize: 12, color: Colors.black),),
                       SizedBox(height: screenHeight*0.005,),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                         children: List.generate(7, (dayIndex) {
                           int dataIndex = weekIndex * 7 + dayIndex;
                           if (dataIndex < dataList.length) {
@@ -168,34 +183,35 @@ class _ChartState extends State<Chart> {
                             return Container(
                               height: screenHeight*0.13,
                               width: screenWidth*0.13,
-                              padding: EdgeInsets.symmetric(vertical: screenHeight*0.0, horizontal: screenWidth*0.0),
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(5),
+                                color: Color(0xffFFFFFF),
+                                border: Border.all(color: Color(0xffBEBEBE)),
+                                borderRadius: BorderRadius.circular(1),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    height: screenHeight*0.02,
-                                    width: screenWidth*0.4,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: const Color(0xFFDCF9C0),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: screenWidth*0.012, vertical: screenHeight*0.01),
+                                    child: Container(
+                                      height: screenHeight*0.02,
+                                      width: screenWidth*0.2,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: const Color(0xFFDCF9C0),
+                                      ),
+                                      child: Text(data['Day'], textAlign: TextAlign.center, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: Color(0xFF464F0B)),),
                                     ),
-                                    child: Text(data['Day'], textAlign: TextAlign.center, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: Color(0xFF464F0B)),),
                                   ),
-                                  SizedBox(height: screenHeight*0.008),
                                   Text(formatDate(data['Date']), textAlign: TextAlign.center, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black87,),),
                                   SizedBox(height: screenHeight*0.005),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        height: screenHeight*0.06,
-                                        width: screenWidth*0.03,
+                                        height: screenHeight*0.05,
+                                        width: screenWidth*0.04,
                                         decoration: BoxDecoration(
-                                          border: Border.all(color: Colors.black, width: 0.4),
+                                          border: Border.all(color: Color(0xffBEBEBE), width: 0.4),
                                         ),
                                         child: Column(
                                           children: data['entry_time'].toString().split('').map((digit) =>
@@ -205,10 +221,10 @@ class _ChartState extends State<Chart> {
                                         ),
                                       ),
                                       Container(
-                                        height: screenHeight*0.06,
-                                        width: screenWidth*0.04,
+                                        height: screenHeight*0.05,
+                                        width: screenWidth*0.045,
                                         decoration: BoxDecoration(
-                                          border: Border.all(color: Colors.black, width: 0.4),
+                                          border: Border.all(color: Color(0xffBEBEBE), width: 0.4),
                                         ),
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
@@ -218,10 +234,10 @@ class _ChartState extends State<Chart> {
                                         ),
                                       ),
                                       Container(
-                                        height: screenHeight*0.06,
-                                        width: screenWidth*0.03,
+                                        height: screenHeight*0.05,
+                                        width: screenWidth*0.04,
                                         decoration: BoxDecoration(
-                                          border: Border.all(color: Colors.black, width: 0.4),
+                                          border: Border.all(color: Color(0xffBEBEBE), width: 0.4),
                                         ),
                                         child: Column(
                                           children: data['exit_time'].toString().split('').map((digit) =>
