@@ -208,11 +208,15 @@ class _ChartState extends State<Chart> {
                                   Row(
                                     children: [
                                       Container(
-                                        height: screenHeight*0.0494,
+                                        height: screenHeight*0.048,
                                         width: screenWidth*0.0395,
                                         decoration: BoxDecoration(
-                                          border: Border.all(color: Color(0xffBEBEBE), width: 0.4),
-                                        ),
+                                          border: Border(
+                                            top: BorderSide(color: Color(0xffBEBEBE), width: 1),
+                                            left: BorderSide(color: Colors.transparent, width: 1),
+                                            right: BorderSide(color: Color(0xffBEBEBE), width: 1),
+                                            bottom: BorderSide(color: Colors.transparent, width: 1),
+                                          ),                                        ),
                                         child: Column(
                                           children: data['entry_time'].toString().split('').map((digit) =>
                                                 Text(digit, style: TextStyle(fontSize: fontSize*0.02, fontWeight: FontWeight.bold),)
@@ -221,10 +225,15 @@ class _ChartState extends State<Chart> {
                                         ),
                                       ),
                                       Container(
-                                        height: screenHeight*0.0494,
+                                        height: screenHeight*0.048,
                                         width: screenWidth*0.045,
                                         decoration: BoxDecoration(
-                                          border: Border.all(color: Color(0xffBEBEBE), width: 0.4),
+                                          border: Border(
+                                            top: BorderSide(color: Color(0xffBEBEBE), width: 1),
+                                            left: BorderSide(color: Colors.transparent, width: 1),
+                                            right: BorderSide(color: Color(0xffBEBEBE), width: 1),
+                                            bottom: BorderSide(color: Colors.transparent, width: 1),
+                                          ),
                                         ),
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
@@ -234,11 +243,15 @@ class _ChartState extends State<Chart> {
                                         ),
                                       ),
                                       Container(
-                                        height: screenHeight*0.0494,
+                                        height: screenHeight*0.048,
                                         width: screenWidth*0.0395,
                                         decoration: BoxDecoration(
-                                          border: Border.all(color: Color(0xffBEBEBE), width: 0.4),
-                                        ),
+                                          border: Border(
+                                            top: BorderSide(color: Color(0xffBEBEBE), width: 1),
+                                            left: BorderSide(color: Colors.transparent, width: 1),
+                                            right: BorderSide(color: Colors.transparent, width: 1),
+                                            bottom: BorderSide(color: Colors.transparent, width: 1),
+                                          ),                                        ),
                                         child: Column(
                                           children: data['exit_time'].toString().split('').map((digit) =>
                                               Text(digit, style: TextStyle(fontSize: fontSize*0.02, fontWeight: FontWeight.bold),)
