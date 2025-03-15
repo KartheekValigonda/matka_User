@@ -110,6 +110,7 @@ class _ChartState extends State<Chart> {
 
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    double fontSize = screenWidth;
 
     return Scaffold(
       backgroundColor: Color(0xffFFFFFF),
@@ -170,7 +171,7 @@ class _ChartState extends State<Chart> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("$startDate - $endDate", style: const TextStyle(fontSize: 12, color: Colors.black),),
+                      Text("$startDate - $endDate", style: TextStyle(fontSize: fontSize*0.04, color: Colors.black),),
                       SizedBox(height: screenHeight*0.005,),
                       Row(
 
@@ -189,7 +190,6 @@ class _ChartState extends State<Chart> {
                                 borderRadius: BorderRadius.circular(1),
                               ),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding: EdgeInsets.symmetric(horizontal: screenWidth*0.012, vertical: screenHeight*0.01),
@@ -200,28 +200,28 @@ class _ChartState extends State<Chart> {
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xFFDCF9C0),
                                       ),
-                                      child: Text(data['Day'], textAlign: TextAlign.center, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: Color(0xFF464F0B)),),
+                                      child: Text(data['Day'], textAlign: TextAlign.center, style: TextStyle(fontSize: fontSize*0.03, fontWeight: FontWeight.w800, color: Color(0xFF464F0B)),),
                                     ),
                                   ),
-                                  Text(formatDate(data['Date']), textAlign: TextAlign.center, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black87,),),
+                                  Text(formatDate(data['Date']), textAlign: TextAlign.center, style: TextStyle(fontSize: fontSize*0.025, fontWeight: FontWeight.bold, color: Colors.black87,),),
                                   SizedBox(height: screenHeight*0.005),
                                   Row(
                                     children: [
                                       Container(
-                                        height: screenHeight*0.05,
-                                        width: screenWidth*0.04,
+                                        height: screenHeight*0.0494,
+                                        width: screenWidth*0.0395,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Color(0xffBEBEBE), width: 0.4),
                                         ),
                                         child: Column(
                                           children: data['entry_time'].toString().split('').map((digit) =>
-                                                Text(digit, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),)
+                                                Text(digit, style: TextStyle(fontSize: fontSize*0.02, fontWeight: FontWeight.bold),)
                                             ).toList(),
 
                                         ),
                                       ),
                                       Container(
-                                        height: screenHeight*0.05,
+                                        height: screenHeight*0.0494,
                                         width: screenWidth*0.045,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Color(0xffBEBEBE), width: 0.4),
@@ -229,19 +229,19 @@ class _ChartState extends State<Chart> {
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            Text(sum, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold,),),
+                                            Text(sum, style: TextStyle(fontSize: fontSize*0.02, fontWeight: FontWeight.bold,),),
                                           ],
                                         ),
                                       ),
                                       Container(
-                                        height: screenHeight*0.05,
-                                        width: screenWidth*0.04,
+                                        height: screenHeight*0.0494,
+                                        width: screenWidth*0.0395,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Color(0xffBEBEBE), width: 0.4),
                                         ),
                                         child: Column(
                                           children: data['exit_time'].toString().split('').map((digit) =>
-                                              Text(digit, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),)
+                                              Text(digit, style: TextStyle(fontSize: fontSize*0.02, fontWeight: FontWeight.bold),)
                                           ).toList(),
                                         ),
                                       ),
