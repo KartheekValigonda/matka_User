@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matka_user/Chart.dart';
+import 'package:matka_user/Home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       title: 'My App',
-      home: const Chart(),
+      home: const Home(),
     );
   }
 }

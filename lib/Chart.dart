@@ -117,8 +117,6 @@ class _ChartState extends State<Chart> {
       appBar: AppBar(
         title: Row(
           children: [
-            Icon(Icons.arrow_back_ios_new, color: Colors.black), // Icon before title
-            SizedBox(width: 8),
             Text("Chart-Shridevi Morning"),
           ],
         ),
@@ -174,7 +172,6 @@ class _ChartState extends State<Chart> {
                       Text("$startDate - $endDate", style: TextStyle(fontSize: fontSize*0.04, color: Colors.black),),
                       SizedBox(height: screenHeight*0.005,),
                       Row(
-
                         children: List.generate(7, (dayIndex) {
                           int dataIndex = weekIndex * 7 + dayIndex;
                           if (dataIndex < dataList.length) {
@@ -182,7 +179,6 @@ class _ChartState extends State<Chart> {
                             String sum = calculateSum(data['entry_time'], data['exit_time']);
 
                             return Container(
-                              height: screenHeight*0.13,
                               width: screenWidth*0.13,
                               decoration: BoxDecoration(
                                 color: Color(0xffFFFFFF),
@@ -194,8 +190,7 @@ class _ChartState extends State<Chart> {
                                   Padding(
                                     padding: EdgeInsets.symmetric(horizontal: screenWidth*0.012, vertical: screenHeight*0.01),
                                     child: Container(
-                                      height: screenHeight*0.02,
-                                      width: screenWidth*0.2,
+                                      width: double.infinity,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: const Color(0xFFDCF9C0),
@@ -205,62 +200,50 @@ class _ChartState extends State<Chart> {
                                   ),
                                   Text(formatDate(data['Date']), textAlign: TextAlign.center, style: TextStyle(fontSize: fontSize*0.025, fontWeight: FontWeight.bold, color: Colors.black87,),),
                                   SizedBox(height: screenHeight*0.005),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        height: screenHeight*0.048,
-                                        width: screenWidth*0.0395,
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                            top: BorderSide(color: Color(0xffBEBEBE), width: 1),
-                                            left: BorderSide(color: Colors.transparent, width: 1),
-                                            right: BorderSide(color: Color(0xffBEBEBE), width: 1),
-                                            bottom: BorderSide(color: Colors.transparent, width: 1),
-                                          ),                                        ),
-                                        child: Column(
+                                  Container(
+                                    height: screenHeight*0.0005,
+                                    child: Divider(
+                                      thickness: 1,
+                                      color: Color(0xffBEBEBE),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: screenHeight*0.05,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           children: data['entry_time'].toString().split('').map((digit) =>
-                                                Text(digit, style: TextStyle(fontSize: fontSize*0.02, fontWeight: FontWeight.bold),)
-                                            ).toList(),
-
+                                              Text(digit, style: TextStyle(fontSize: fontSize*0.02, fontWeight: FontWeight.bold),)
+                                          ).toList(),
                                         ),
-                                      ),
-                                      Container(
-                                        height: screenHeight*0.048,
-                                        width: screenWidth*0.045,
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                            top: BorderSide(color: Color(0xffBEBEBE), width: 1),
-                                            left: BorderSide(color: Colors.transparent, width: 1),
-                                            right: BorderSide(color: Color(0xffBEBEBE), width: 1),
-                                            bottom: BorderSide(color: Colors.transparent, width: 1),
-                                          ),
+                                        VerticalDivider(
+                                          width: 5,
+                                          thickness: 1,
+                                          color: Color(0xffBEBEBE),
                                         ),
-                                        child: Column(
+                                        Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Text(sum, style: TextStyle(fontSize: fontSize*0.02, fontWeight: FontWeight.bold,),),
                                           ],
                                         ),
-                                      ),
-                                      Container(
-                                        height: screenHeight*0.048,
-                                        width: screenWidth*0.0395,
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                            top: BorderSide(color: Color(0xffBEBEBE), width: 1),
-                                            left: BorderSide(color: Colors.transparent, width: 1),
-                                            right: BorderSide(color: Colors.transparent, width: 1),
-                                            bottom: BorderSide(color: Colors.transparent, width: 1),
-                                          ),                                        ),
-                                        child: Column(
+                                        VerticalDivider(
+                                          width: 5,
+                                          thickness: 1,
+                                          color: Color(0xffBEBEBE),
+                                        ),
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           children: data['exit_time'].toString().split('').map((digit) =>
                                               Text(digit, style: TextStyle(fontSize: fontSize*0.02, fontWeight: FontWeight.bold),)
                                           ).toList(),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   )
-                                  ],
+                                ],
                               ),
                             );
                           } else {
